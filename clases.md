@@ -31,7 +31,6 @@
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_4/dia_4.R)  
 * [Presentación](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_4/dia_4.pdf)    
 
-
 ### Clase 5: Introducción a la regresión lineal
  
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_5/dia_5.R)  
