@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # ¡Bienvenidas y Bienvenidos!
 
 Bienvenidas y bienvenidos al curso Análisis de Datos con R, organizado por la Asociación Argentina de Bioinformática y Biología Computacional. En este curso, Andrés Rabinovich, Maximiliano Beckel, Bruno Kaufman y Ariel Berardino les acompañaremos a conocer el lenguaje de programación R y cómo aprovecharlo para su trabajo e investigaciones.
@@ -15,7 +14,7 @@ Por favor, ingresen con su nombre completo y no compartan el vínculo con nadie,
 
 La instalación de R en nuestra computadora depende del sistema operativo. En el sitio oficial de R, [https://cran.r-project.org/](https://cran.r-project.org/) hay tutoriales para instalar R en los tres principales sistemas operativos (Linux, Windows y Mac). Para Windows, alcanza con descargar el instalador desde:
 
-[https://cran.r-project.org/bin/windows/base/R-4.0.2-win.exe](https://cran.r-project.org/bin/windows/base/R-4.0.2-win.exe)
+[https://cran.r-project.org/bin/windows/base/R-4.0.4-win.exe](https://cran.r-project.org/bin/windows/base/R-4.0.4-win.exe)
 
 y ejecutarlo.
 
@@ -39,7 +38,7 @@ Para facilitar su uso, vamos a instalar además RStudio Desktop, un entorno de d
 
 y seleccionar la versión del instalador adecuada a nuestro sistema operativo. Para Windows alcanza con descargar el instalador:
 
-[https://download1.rstudio.org/desktop/windows/RStudio-1.3.1093.exe](https://download1.rstudio.org/desktop/windows/RStudio-1.3.1093.exe)
+[https://download1.rstudio.org/desktop/windows/RStudio-1.4.1106.exe](https://download1.rstudio.org/desktop/windows/RStudio-1.4.1106.exe)
 
  y ejecutarlo.
 
