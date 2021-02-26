@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # ¡Bienvenidas y Bienvenidos!
 
 Bienvenidas y bienvenidos al curso Análisis de Datos con R, organizado por la Asociación Argentina de Bioinformática y Biología Computacional. En este curso, Andrés Rabinovich, Maximiliano Beckel, Bruno Kaufman y Ariel Berardino les acompañaremos a conocer el lenguaje de programación R y cómo aprovecharlo para su trabajo e investigaciones.
