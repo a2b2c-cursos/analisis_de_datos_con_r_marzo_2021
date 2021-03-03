@@ -1,8 +1,9 @@
 #################################################################
 #              Curso de análisis de datos con R
 #Asociación Argentina de Bioinformática y Biologíca Computacional
-#                         Octubre 2020
-#            Práctica Test de hipótesis
+#                 Fundación Instituto Leloir
+#                        Marzo 2021
+#                   Práctica Test de hipótesis
 #################################################################
 
 #Primero le decimos a R en qué directorio queremos que trabaje
@@ -155,14 +156,11 @@ chisq.test(titanic$Survived, titanic$Pclass)
 #Las otras dos variables quedan de tarea
 
 #e)
-#Armamos los datos. De una muestra de 24 estudiantes, se tiene que hay 10 que estudian (1 hombre y 9 mujeres) y 14 que no (11 hombres y 3 mujeres)
-#Hay 12 hombres y 12 mujeres
-estudiantes <- data.frame(sexo = rep(c("H", "M"), each = 12),
-                          estudia = c(F, F, F, F, F, F, F, F, F, F, F, T, F, F, F, T, T, T, T, T, T, T, T, T))
-head(estudiantes)
+#Armamos los datos. De una muestra de 241 personas, se tienen 118 pacientes tratados con el medicamente y 123 con el placebo, de los cuales se curaron 106 y 104 respectivamente.
+pacientes <- data.frame(tratado = c(rep(TRUE, 118), rep(FALSE, 123)), 
+                        curado = c(rep(TRUE, 106), rep(FALSE, 12), rep(TRUE, 104), rep(FALSE, 19)))
+head(pacientes)
 #Armemos la tabla de contingencia
-table(estudiantes$sexo, estudiantes$estudia)
-#La hipótesis nula es que la proporción entre hombres y mujeres que estudian es la misma.
-#Veamos si es así
-chisq.test(estudiantes$sexo, estudiantes$estudia)
-#Podemos rechazar que la propoción sea la misma.
+table(pacientes$tratado, pacientes$curado)
+chisq.test(pacientes$tratado, pacientes$curado)
+#No podemos rechazar que no hay efecto.

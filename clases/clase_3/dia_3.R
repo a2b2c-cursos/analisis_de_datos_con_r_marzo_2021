@@ -1,7 +1,8 @@
 #################################################################
 #              Curso de análisis de datos con R
 #Asociación Argentina de Bioinformática y Biologíca Computacional
-#                         Octubre 2020
+#                 Fundación Instituto Leloir
+#                        Marzo 2021
 #                Estadística descriptiva y AED
 #################################################################
 

@@ -1,12 +1,13 @@
 #################################################################
 #              Curso de análisis de datos con R
 #Asociación Argentina de Bioinformática y Biologíca Computacional
-#                         Octubre 2020
+#                 Fundación Instituto Leloir
+#                        Marzo 2021
 #            Práctica Estadística descriptiva y AED
 #################################################################
 
 #Primero le decimos a R en qué directorio queremos que trabaje
-setwd("~/trabajo/cursos/analisis_de_datos_con_r_octubre_2020/clases/clase_3")
+setwd("clases/clase_3") #reemplazalo con tu directorio de trabajo
 
 #1) Medidas de resumen
 

@@ -1,7 +1,8 @@
 #################################################################
 #              Curso de análisis de datos con R
 #Asociación Argentina de Bioinformática y Biologíca Computacional
-#                         Octubre 2020
+#                 Fundación Instituto Leloir
+#                        Marzo 2021
 #                      Test de hipótesis
 #################################################################
 
@@ -254,6 +255,74 @@ shapiro.test(alturasHolanda)
 ?t.test
 t.test(alturasHolanda, mu = 175)
 
+#Algunas personas interpretan el pvalue como una medida del efecto observado. ¿Será correcta esta interpretación? Veamos
+#Simulemos un efecto, por ejemplo, el de una hormona de crecimiento aplicada a un hongo.
+#Simulemos la población no tratada y la tratada, y supongamos que hubo un efecto en la tratada
+set.seed(123456)
+no_tratada <- rnorm(10, mean = 10, sd = 1)
+tratada    <- rnorm(10, mean = 11, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+#¿Qué pasó? ¿Por qué? ¿recuerdan el nombre de este tipo de errores?
+
+#Aumentemos el tamaño de la muestra
+set.seed(123456)
+no_tratada <- rnorm(15, mean = 10, sd = 1)
+tratada    <- rnorm(15, mean = 11, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+
+#y ahora, ¿Qué pasó? ¿Por qué? ¿Cambió el efecto acaso?
+
+#Aumentemos aún más el tamaño de la muestra
+set.seed(123456)
+no_tratada <- rnorm(100, mean = 10, sd = 1)
+tratada    <- rnorm(100, mean = 11, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+
+#Entonces, ojo, un pvalue más chico no nos dice que tenemos un efecto más grande! 
+#Cambiando nuestro experimento podemos manipular el pvalue, manteniendo el mismo tamaño de efecto
+#Veamos que pasa si el efecto fuera más chico
+set.seed(123456)
+no_tratada <- rnorm(100, mean = 10, sd = 1)
+tratada    <- rnorm(100, mean = 10.1, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+
+#¿Qué pasó?
+#Mejoremos el experimento
+set.seed(123456)
+no_tratada <- rnorm(1000, mean = 10, sd = 1)
+tratada    <- rnorm(1000, mean = 11, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+
+#¿Y si no hubiera efecto?
+set.seed(123456)
+no_tratada <- rnorm(100000, mean = 10, sd = 1)
+tratada    <- rnorm(100000, mean = 10, sd = 1)
+t.test(no_tratada, tratada)
+
+#Bueno, por suerte no era un artefacto del experimento. Pero con una significancia de 0.05, qué pasa si repetimos el experimento 100 veces?
+set.seed(123456)
+pvalues <- c()
+for(i in 1:20){
+  no_tratada <- rnorm(1000, mean = 10, sd = 1)
+  tratada    <- rnorm(1000, mean = 10, sd = 1)
+  pvalues <- c(pvalues, t.test(no_tratada, tratada)$p.value)
+}
+table(pvalues < 0.05)
+#¿Qué pasó? ¿Qué tipo de errores observamos?
+
+#Sigamos analizando la salida del test, volviendo a las alturas en Holanda
+t.test(alturasHolanda, mu = 175)
+
 #¿Qué es el intervalo de confianza de 95%?
 #El mismo test nos estima la media de la población de la muestra que tomamos. Nos dice que la estima en 181.3 cm pero nos da algo mejor, nos da un intervalo
 #de confianza del 98%, entre 180.23 cm hasta 182.37 cm. ¿Esto significa que hay un 95% de probabilidades de que la media real de la población de Holanda esté
@@ -317,17 +386,25 @@ bartlett.test(list(iris$Sepal.Length[iris$Species == "setosa"], iris$Sepal.Lengt
 #Ups! Qué podemos hacer? Usar el test de welch
 t.test(iris$Sepal.Length[iris$Species == "setosa"], iris$Sepal.Length[iris$Species == "versicolor"], var.equal = F)
 
-#Queremos estudiar el efecto de una droga para tratar una cierta enfermedad.
-#Tenemos 105 pacientes, de los cuales 50 fueron tratados con la droga y 55 no. Después de un mes se controló el estado de salud de todos los pacientes.
-pacientes <- read.csv("https://goo.gl/j6lRXD")
+#Mucho se habló de la publicación (o no publicación) de los resultados de la vacuna sputnik v.
+#Finalmente, los resultados se publicaron el 2 de febrero en The Lancet, en
+#Safety and efficacy of an rAd26 and rAd5 vector-based heterologous prime-boost COVID-19 vaccine: an interim analysis 
+#of a randomised controlled phase 3 trial in Russia. Logunov et al.
+#https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)00234-8/fulltext
+#En el texto nos cuentan que hicieron un ensayo doble ciego con 21977 adultos, de los cuales 16501 fueron vacunados con la sputnik y 5476 recibieron placebo.
+#Luego de 21 días, de 14964 participantes vacunados, 16 contrajeron COVID-19, mientras que de 4902 del grupo placebo, 62 lo contrajeron.  
+#Armemos la tabla de datos
+pacientes <- data.frame(tratado = c(rep(TRUE, 14964), rep(FALSE, 4902)), 
+                        infectado = c(rep(TRUE, 16), rep(FALSE, (14964-16)), rep(TRUE, 62), rep(FALSE, (4902-62))))
 head(pacientes)
 #Se obtuvo la siguiente tabla (llamada tabla de contingencia):
-table(pacientes$treatment, pacientes$improvement)
+table(pacientes$tratado, pacientes$infectado)
 
-#Podemos utilizar un test de chi cuadrado para ver si son independientes la mejora del tratamiento. El test
+#Podemos utilizar un test de chi cuadrado para ver si son independientes la infección y la vacuna. El test
 #de chi cuadrado requiere que todos los valores esperados en la tabla de contingencia sean mayores a 5.
 #R nos va a avisar si no se cumple la condición. En ese caso, podemos usar el test exacto de fisher fisher.test()
 #H0: Las dos variables son independientes
 #H1: Las dos variables no son independientes
 
-chisq.test(pacientes$treatment, pacientes$improvement, correct=FALSE)
+chisq.test(pacientes$tratado, pacientes$infectado, correct=FALSE)
+#Descartamos que sea independiente la infección de la vacuna.
