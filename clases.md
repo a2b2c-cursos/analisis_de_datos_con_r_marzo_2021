@@ -11,6 +11,7 @@
 ### Clase 2: Introducción a R, continuación
 
 * [Práctica](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/practica_dia_2.docx)  
+* [Práctica resuelta](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/solucion_practica_dia_2.R)    
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/dia_2.R)  
 * [Cuadernillo](https://rpubs.com/msbeckel/cursoR_dia2)
 * [Cuadernillo descargable](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/curso_r_dia2.Rmd)
