@@ -1,7 +1,5 @@
 ---
 title: "Dia 5: ANOVA y Regresión Lineal"
-author: "Maximiliano S. Beckel"
-date: "29/9/2020"
 output: html_document
 ---
 
