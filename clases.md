@@ -19,6 +19,8 @@
 * [Cuadernillo](https://rpubs.com/msbeckel/cursoR_dia2)
 * [Cuadernillo descargable](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/curso_r_dia2.Rmd)
 * [Dataset](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_2/antropometria.csv)  
+* [Clase grabada parte 1](https://youtu.be/JGAhGQ0mBh0)
+* [Clase grabada parte 2](https://youtu.be/xETFhwVN3Tc)
 
 ### Clase 3: Introducción a la estadística descriptiva
 
