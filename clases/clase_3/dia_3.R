@@ -15,12 +15,14 @@
 #Primero le decimos a R en qué directorio queremos que trabaje
 getwd()
 setwd("~/trabajo/cursos/analisis_de_datos_con_r_octubre_2020/clases/clase_3")
+setwd("c://users//andy//") 
 
 #setwd("trabajo/cursos/analisis_de_datos_con_r_octubre_2020/clases/clase_3")
 #Leemos un archivo csv. Usamos header = T para que tome la primera fila del archivo como los nombres de los atributos
 #y stringsAsFactors = F para que no modifique los atributos tipo character o string
 casos_covid <- read.csv(file = "datasets/cases-covid-19.csv", stringsAsFactors = F, header = T)
-casos_covid <- cases.covid.19
+View(casos_covid)
+#casos_covid <- cases.covid.19
 
 #Veamos cuantos datos tiene nuestro dataset, representados por las filas de la tabla
 nrow(casos_covid)
@@ -77,9 +79,32 @@ str(casos_covid_secuenciados)
 
 #Sequence.Length, a, c, g, t son enteros (int) y an, cn, gn y tn son valores "reales" (num), mientras que el resto son characters
 #Veamos un resumen de Sequence.Length
+casos_covid_secuenciados$Virus.Strain.Name
+casos_covid_secuenciados[, "Virus.Strain.Name"]
+casos_covid_secuenciados[, c(1, 5)]
+head(casos_covid_secuenciados[, c("Virus.Strain.Name", "Sequence.Length")])
+casos_covid_secuenciados[c(1, 10), c("Virus.Strain.Name", "Sequence.Length")]
+class(casos_covid_secuenciados)
+dim(casos_covid_secuenciados)
+colnames(casos_covid_secuenciados)
+casos_covid_secuenciados$Virus.Strain.Name
+
 class(casos_covid_secuenciados$Virus.Strain.Name)
+length(casos_covid_secuenciados$Virus.Strain.Name)
+nrow(casos_covid_secuenciados)
+dim(casos_covid_secuenciados)
+length(casos_covid_secuenciados)
+nrow(casos_covid_secuenciados$Virus.Strain.Name)
 
 #nrow(casos_covid_secuenciados)
+nas <- is.na(casos_covid_secuenciados$Originating.Lab)
+table(nas)
+
+casos_covid_secuenciados_sin_na <- casos_covid_secuenciados[which(nas == FALSE), ]
+casos_covid_secuenciados_sin_na <- casos_covid_secuenciados[nas == FALSE, ]
+casos_covid_secuenciados_sin_na <- casos_covid_secuenciados[!nas, ]
+
+nas <- is.na(casos_covid_secuenciados)
 
 casos_covid_secuenciados$Sequence.Length
 

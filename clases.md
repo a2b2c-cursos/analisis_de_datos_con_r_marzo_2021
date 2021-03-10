@@ -29,6 +29,9 @@
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/dia_3.R)  
 * [Datasets](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/datasets.zip)    
 * [Teórica](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/dia_3.pdf)
+* [Clase grabada parte 1](https://youtu.be/SkgqJ2gs3k8)
+* [Clase grabada parte 2](https://youtu.be/ZjtmW0EcW8c)
+
 
 ### Clase 4: Introducción a la inferencia estadística.
 
