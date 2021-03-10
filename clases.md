@@ -26,6 +26,7 @@
 
 * [Práctica](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/practica_dia_3.pdf)   
 * [Práctica resuelta](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/solucion_practica_dia_3.R)    
+* [Complemento gráficos](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/complemento_graficos.R)   
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/dia_3.R)  
 * [Datasets](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/datasets.zip)    
 * [Teórica](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_3/dia_3.pdf)

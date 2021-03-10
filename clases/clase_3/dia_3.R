@@ -21,6 +21,7 @@ setwd("c://users//andy//")
 #Leemos un archivo csv. Usamos header = T para que tome la primera fila del archivo como los nombres de los atributos
 #y stringsAsFactors = F para que no modifique los atributos tipo character o string
 casos_covid <- read.csv(file = "datasets/cases-covid-19.csv", stringsAsFactors = F, header = T)
+antropometria <- read.csv("~/trabajo/cursos/analisis_de_datos_con_r_octubre_2020/clases/clase_3/datasets/antropometria.csv")
 View(casos_covid)
 #casos_covid <- cases.covid.19
 
@@ -135,6 +136,7 @@ varianza
 
 desvio <- sd(casos_covid_secuenciados$Sequence.Length)
 desvio
+media
 
 desvio*desvio
 
@@ -150,8 +152,12 @@ hist(casos_covid_secuenciados$Sequence.Length, xlab="Longitud de la secuencia", 
 #de valores que están cerca del 0. Son dos poblaciones distintas, vamos a tener que analizarlas
 #por separado!!
 #Elegimos los valores por arriba de 29000
+class(casos_covid_secuenciados$Sequence.Length)
+casos_covid_secuenciados$Sequence.Length[9]
 ids_secuencias_largas <- which(casos_covid_secuenciados$Sequence.Length > 29000)
 secuencias_largas     <- casos_covid_secuenciados$Sequence.Length[ids_secuencias_largas]
+casos_covid_secuenciados[9,2]
+casos_covid_secuenciados$Sequence.Length[ids_secuencias_largas]
 
 #Veamos que pasa nuevamente con el resumen y la dispersión
 summary(secuencias_largas)
@@ -162,13 +168,15 @@ IQR(secuencias_largas)
 hist(secuencias_largas)
 
 #Podemos graficar un boxplot y comparar la información de ambos gráficos
+tiff(filename = "../../../analisis_de_datos_con_r_marzo_2021/clases/clase_3/boxplot.tiff", res = 300, width = 1400, height = 1400)
 boxplot(secuencias_largas)
+dev.off()
 
 #R permite graficar tipo mosaico, así podemos graficar los dos juntos
 #La función layout recibe una matriz y grafica un mosaico en función de la cantidad de filas
 #y columnas que tiene esa matriz
 #dev.new()
-mosaico_layout <- matrix(1:4, ncol=2, nrow = 2, byrow = T)
+mosaico_layout <- matrix(1:4, ncol=2, nrow = 2, byrow = F)
 layout(mosaico_layout)
 hist(secuencias_largas)
 boxplot(secuencias_largas, horizontal = T) #Graficamos el boxplot horizontal para comparar
@@ -180,7 +188,7 @@ boxplot(secuencias_largas, horizontal = T) #Graficamos el boxplot horizontal par
 hist(secuencias_largas)
 boxplot(secuencias_largas, horizontal = T) #Graficamos el boxplot horizontal para comparar
 
-dev.off()
+#dev.off()
 
 #Volvemos al layout convencional
 layout(1)
@@ -190,6 +198,7 @@ plot(1, 1)
 #cuantas veces aparece cada valor y quedarnos con el que más veces aparezca.
 #Usamos table para contar y which.max para que nos diga cual es el valor que más aparece
 cuantas_veces_aparece_cada_valor <- table(secuencias_largas)
+cuantas_veces_aparece_cada_valor
 class(cuantas_veces_aparece_cada_valor)
 nombresDeLaTabla <- names(cuantas_veces_aparece_cada_valor)
 
@@ -198,11 +207,6 @@ cuantas_veces_aparece_cada_valor[which.max(cuantas_veces_aparece_cada_valor)]
 median(secuencias_largas)
 mean(secuencias_largas)
 
-v <- c(1, 2, 3, 4, 5, 3)
-
-which(v == 3)
-
-which
 #------------------------------------------------------------------------------------
 #Ejercicios: 
 #casos_covid_secuenciados$a
@@ -236,6 +240,8 @@ class(paises)
 primerItem <- function(v){
   return(v[1])
 }
+
+hist()
 
 #Veamos como funciona primerItem
 vectorDePrueba <- c("Curso", "De", "R")
