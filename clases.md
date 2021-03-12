@@ -49,3 +49,5 @@
 * [Dataset](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_5/antropologia_poblaciones.csv)  
 * [Cuadernillo](https://rpubs.com/msbeckel/cursoR_dia5)  
 * [Cuadernillo descargable](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_5/dia_5.Rmd)
+* [Clase grabada parte 1](https://youtu.be/kkHwSv0CvrM)
+* [Clase grabada parte 2](https://youtu.be/jYm0tvPEKDA)

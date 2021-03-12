@@ -352,11 +352,12 @@ t.test(alturasHolanda, mu = 175)
 set.seed(1234567)
 mediaReal <- 182
 aciertos <- 0
+aciertos_pval <- 0
 muestras <- 100
 for(i in 1:muestras){
   alturasHolanda <- rnorm(10, mean = mediaReal, sd = 7)
   testDeAltura <- t.test(alturasHolanda, mu = 175)
-  if(testDeAltura$conf.int[1] < mediaReal & mediaReal < testDeAltura$conf.int[2]){
+  if((testDeAltura$conf.int[1] < mediaReal & mediaReal < testDeAltura$conf.int[2]) & testDeAltura$p.value < 0.05){
     aciertos <- aciertos + 1
   }
 }
@@ -389,8 +390,8 @@ shapiro.test(plantas$weight[plantas$group == "trt2"])
 #H0: las medias de los dos grupos son iguales
 #H1: las medias de los dos grupos son distintas
 
-t.test(plantas$weight[plantas$group == "ctrl"], plantas$weight[plantas$group == "trt1"])
-t.test(plantas$weight[plantas$group == "ctrl"], plantas$weight[plantas$group == "trt2"])
+t.test(plantas$weight[plantas$group == "ctrl"], plantas$weight[plantas$group == "trt1"], var.equal = TRUE)
+t.test(plantas$weight[plantas$group == "ctrl"], plantas$weight[plantas$group == "trt2"], var.equal = TRUE)
 
 #¿Qué pasa si nuestros datos no cumplen homogeneidad de varianza?
 #Veamos los datos de iris
