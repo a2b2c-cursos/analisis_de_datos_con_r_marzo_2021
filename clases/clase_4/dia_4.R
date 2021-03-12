@@ -27,10 +27,10 @@ sample(x = dado, size = 1)
 #Cada vez que lo tiramos da algo distinto!
 
 #Ahora tiremos dos dados
-sample(dado, 2, replace=T)
-sample(dado, 2, replace=T)
-sample(dado, 2, replace=T)
-sample(dado, 2, replace=T)
+sample(dado, 2, replace = T)
+sample(dado, 2, replace = T)
+sample(dado, 2, replace = T)
+sample(dado, 2, replace = T)
 
 #Tiramos diez veces los dos dados. Podríamos usar un for pero r nos ayuda usando replicate
 ?replicate
@@ -168,7 +168,9 @@ tail(x)
 
 #Usamos la función dnorm que devuelve la densidad de probabilidad para cada valor de x que usamos
 d <- dnorm(x, mean = 0, sd = 1)
-
+hist(norm, freq = F)
+points(x, d, main = "Densidad de probabilidad normal (mean = 0, sd = 0)")
+lines(x, d)
 #Grafiquemos cada par x, d de la densidad de probabilidad real.
 plot(x, d, main = "Densidad de probabilidad normal (mean = 0, sd = 0)")
 
@@ -205,12 +207,19 @@ mean(muestra1)
 muestra2 <- rnorm(n = 10, mean = 175, sd = 7)
 muestra2
 
+a <- t(replicate(100, runif(10000)))
+b <- apply(a, 1, mean)
+hist(b)
+
 #Con esta muestra, ¿Qué valor estimamos para la media?
 mean(muestra2)
 
 #Volviendo a los aliens, ¿podemos cuantificar de alguna forma la sorpresa (o falta de sorpresa) que nos dio cada uno de los esqueletos encontrados?
 #Podríamos preguntarnos cuál es la probabilidad de encontrar una persona de 170 cm o más por azar. Usamos pnorm que nos da la probabilidad de 170 o menos
 #así que eso se lo tenemos que restar a la probabilidad total que es 1
+x <- seq(150, 200, 1)
+d <- dnorm(x, mean = 175, sd = 7)
+plot(x, d)
 pvalue1 <- 1 - pnorm(170, mean = 175, sd = 7)
 pvalue1
 
@@ -254,6 +263,7 @@ shapiro.test(alturasHolanda)
 #H1: alturaMedia != 175
 ?t.test
 t.test(alturasHolanda, mu = 175)
+mean(alturasHolanda)
 
 #Algunas personas interpretan el pvalue como una medida del efecto observado. ¿Será correcta esta interpretación? Veamos
 #Simulemos un efecto, por ejemplo, el de una hormona de crecimiento aplicada a un hongo.
@@ -264,6 +274,8 @@ tratada    <- rnorm(10, mean = 11, sd = 1)
 shapiro.test(tratada)
 shapiro.test(no_tratada)
 t.test(no_tratada, tratada)
+#H0 las medias son iguales
+#H1 las medias son distintas
 #¿Qué pasó? ¿Por qué? ¿recuerdan el nombre de este tipo de errores?
 
 #Aumentemos el tamaño de la muestra
@@ -298,7 +310,14 @@ t.test(no_tratada, tratada)
 #Mejoremos el experimento
 set.seed(123456)
 no_tratada <- rnorm(1000, mean = 10, sd = 1)
-tratada    <- rnorm(1000, mean = 11, sd = 1)
+tratada    <- rnorm(1000, mean = 10.1, sd = 1)
+shapiro.test(tratada)
+shapiro.test(no_tratada)
+t.test(no_tratada, tratada)
+
+set.seed(123456)
+no_tratada <- rnorm(10000, mean = 10, sd = 1)
+tratada    <- rnorm(10000, mean = 10.1, sd = 1)
 shapiro.test(tratada)
 shapiro.test(no_tratada)
 t.test(no_tratada, tratada)
@@ -312,7 +331,7 @@ t.test(no_tratada, tratada)
 #Bueno, por suerte no era un artefacto del experimento. Pero con una significancia de 0.05, qué pasa si repetimos el experimento 100 veces?
 set.seed(123456)
 pvalues <- c()
-for(i in 1:20){
+for(i in 1:100){
   no_tratada <- rnorm(1000, mean = 10, sd = 1)
   tratada    <- rnorm(1000, mean = 10, sd = 1)
   pvalues <- c(pvalues, t.test(no_tratada, tratada)$p.value)

@@ -40,6 +40,8 @@
 * [Práctica resuelta](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_4/solucion_practica_dia_4.R)    
 * [Script de R](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_4/dia_4.R)  
 * [Presentación](https://a2b2c-cursos.github.io/analisis_de_datos_con_r_marzo_2021/clases/clase_4/dia_4.pdf)    
+* [Clase grabada parte 1](https://youtu.be/N5M6iOb19Z4)
+* [Clase grabada parte 2](https://youtu.be/T4lt5y1HRM0)
 
 ### Clase 5: Introducción a la regresión lineal
  
